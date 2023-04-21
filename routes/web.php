@@ -16,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('inicio');
 });
-Route::get('/',[\App\Http\Controllers\PersonasController::class,'index'])->name('personas.index');
+Route::get('/',[\App\Http\Controllers\PersonasController::class,'index'])->name('inicio');
 
-Route::get('/create',[\App\Http\Controllers\PersonasController::class,'index'])->name('personas.create');
+Route::get('/create',[\App\Http\Controllers\PersonasController::class,'create'])->name('create');
 
-Route::get('/edit',[\App\Http\Controllers\PersonasController::class,'index'])->name('personas.edit');
+Route::get('/edit/{id}',[\App\Http\Controllers\PersonasController::class,'edit'])->name('edit');
+Route::put('/update1/{id}',[\App\Http\Controllers\PersonasController::class,'update1'])->name('update1');
 
-Route::get('/agregar',[\App\Http\Controllers\PersonasController::class,'index'])->name('personas.agregar');
+Route::get('/delete/{id}',[\App\Http\Controllers\PersonasController::class,'delete'])->name('delete');
+
+Route::delete('/destroy/{id}',[\App\Http\Controllers\PersonasController::class,'destroy'])->name('destroy');
+
+Route::post('/add',[\App\Http\Controllers\PersonasController::class,'add'])->name('add');
+

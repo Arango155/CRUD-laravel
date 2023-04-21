@@ -8,7 +8,7 @@
         <h5 class="card-header">CRUD</h5>
         <div class="card-body">
             <h5 class="card-title">Listado</h5>
-            <p><a href="{{route("personas.create")}}" class="btn btn-primary">Agregar</a></p>
+            <p><a href="{{route("create")}}" class="btn btn-primary">Agregar</a></p>
 
             @php
 
@@ -26,12 +26,26 @@
                 </thead>
                 <tbody>
 
-                @foreach($datos as $item)
+                @foreach($dates as $item)
                 <tr>
                     <td>{{$item->apellido_paterno}}</td>
                     <td>{{$item->apellido_materno}}</td>
                     <td>{{$item->nombre}}</td>
                     <td>{{$item->fecha_nacimiento}}</td>
+                    <td>
+                        <form action="{{ route("edit", $item->id) }}" method="GET">
+                            <button class="btn btn-warning btn-sm">
+                                <span class="fas fa-user-edit"></span>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ route("delete", $item->id) }}" method="GET">
+                            <button class="btn btn-danger btn-sm">
+                                <span class="fas fa-user-times"></span>
+                            </button>
+                        </form>
+                    </td>
 
                 </tr>
                 @endforeach
